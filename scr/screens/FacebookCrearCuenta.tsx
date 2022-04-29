@@ -10,6 +10,7 @@ import {
 import {Dropdown} from 'react-native-element-dropdown';
 import CheckBox from '@react-native-community/checkbox';
 import Theme from '../styles/Theme.style';
+import InputComponent from '../components/InputComponent';
 
 const usuarioDropdown = [
   {label: 'usuario1', value: 'usuario1'},
@@ -23,11 +24,8 @@ export default function FacebookCrearCuenta() {
   const [email, setEmail] = useState(null);
   const [toggleCheckBox, setToggleCheckBox] = useState(false);
   const [toggleCheckBox2, setToggleCheckBox2] = useState(false);
-  const [disabled, setDisabled] = useState();
+  const [disabled, setDisabled] = useState(true);
   const [isFocusDropdown, setIsFocusDropdown] = useState(false);
-  const [isFocusInput, setIsFocusInput] = useState(false);
-  const [isFocusInput2, setIsFocusInput2] = useState(false);
-  const [isFocusInput3, setIsFocusInput3] = useState(false);
 
   const [registro, setRegistro] = useState([]);
 
@@ -72,37 +70,25 @@ export default function FacebookCrearCuenta() {
           setIsFocusDropdown(false);
         }}
       />
-      <TextInput
-        style={!isFocusInput ? styles.input : styles.inputFocus}
-        placeholder="Nombre completo"
+      <InputComponent 
+        placeholder="Nombre completo" 
         value={name}
-        onFocus={() => setIsFocusInput(true)}
-        onBlur={() => setIsFocusInput(false)}
         onChange={newNombre => {
           setName(newNombre);
-          setIsFocusInput(false);
         }}
       />
-      <TextInput
-        style={!isFocusInput2 ? styles.input : styles.inputFocus}
-        placeholder="Usuario"
-        value={user}
-        onFocus={() => setIsFocusInput2(true)}
-        onBlur={() => setIsFocusInput2(false)}
+      <InputComponent 
+        placeholder="Nombre de usuario" 
+        value={user} 
         onChange={newUsuario => {
           setUser(newUsuario);
-          setIsFocusInput2(false);
         }}
       />
-      <TextInput
-        style={!isFocusInput3 ? styles.input : styles.inputFocus}
-        placeholder="Email"
-        value={email}
-        onFocus={() => setIsFocusInput3(true)}
-        onBlur={() => setIsFocusInput3(false)}
+      <InputComponent 
+        placeholder="Email" 
+        value={email} 
         onChange={newEmail => {
           setEmail(newEmail);
-          setIsFocusInput3(false);
         }}
       />
       <TouchableOpacity
@@ -168,26 +154,6 @@ const styles = StyleSheet.create({
     borderWidth: 0.8,
     padding: 5,
     marginBottom: 20,
-  },
-  input: {
-    width: '95%',
-    alignSelf: 'center',
-    borderColor: Theme.BASE_3,
-    borderRadius: 5,
-    borderWidth: 0.8,
-    padding: 10,
-    marginBottom: 20,
-    fontSize: Theme.FONT_SIZE_4,
-  },
-  inputFocus: {
-    width: '95%',
-    alignSelf: 'center',
-    borderColor: Theme.PRIMARY_4,
-    borderRadius: 5,
-    borderWidth: 0.8,
-    padding: 10,
-    marginBottom: 20,
-    fontSize: Theme.FONT_SIZE_4,
   },
   button: {
     width: '95%',
